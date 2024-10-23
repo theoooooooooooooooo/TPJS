@@ -52,7 +52,7 @@
                     <h1>Veuillez vous inscrire</h1>
                 </div>
             </div>
-            <form class="test">
+            <form class="test" action="bonus.html" method="GET" onsubmit="Verification(event)">
                 <div class="mb-3">
                     <label for="nom" class="form-label">Nom</label>
                     <input type="text" class="form-control" id="nom" placeholder="Nom" required />
@@ -73,7 +73,11 @@
                     <label for="mdp" class="form-label">Mot de passe</label>
                     <input type="password" class="form-control" id="mdp" placeholder="Mot de passe" required />
                 </div>
-                <button type="button" onclick="Verification()" class="btn">Enregistrer</button>
+                <div class="mb-3">
+                    <label for="mdp" class="form-label">Confirmation mot de passe</label>
+                    <input type="password" class="form-control" id="cmdp" placeholder="Confirmation mot de passe" required />
+                </div>
+                <button type="submit" class="btn">Enregistrer</button>
             </form>
         </div>
     </div>
@@ -81,17 +85,24 @@
         <!-- place footer here -->
     </footer>
     <script>
-        function Verification() {
+        function Verification(e) {
             let nom = document.getElementById("nom").value;
             let prenom = document.getElementById("prenom").value;
             let email = document.getElementById("email").value;
             let pseudo = document.getElementById("pseudo").value;
             let mdp = document.getElementById("mdp").value;
+            let cmdp = document.getElementById("cmdp").value;
 
-            if (nom && prenom && email && pseudo && mdp) {
-                alert("Information Valide");
+            if (mdp.length >= 8 && cmdp.length >= 8){ 
+                if (nom.trim() != "" && prenom.trim() != "" && email.trim() != "" && pseudo.trim() != "" && mdp.trim() != "" && cmdp.trim() != "" && mdp === cmdp) {
+                    alert("Information Valide");
+                } else {
+                    e.preventDefault();
+                    alert("Information non Valide");
+                }
             } else {
-                alert("Information non Valide");
+                e.preventDefault();
+                alert("Le mot de passe ou la confirmation du mot de passe n'est pas valide elle doit être de 8 caractère");
             }
         }
     </script>
