@@ -6,17 +6,18 @@
     <title>Index</title>
 </head>
 <body>
-    <p id="txtReplace">
+    <!-- <p id="txtReplace">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Quos ratione distinctio laborum sed minima nam illo rerum, 
         provident expedita cumque odit voluptatem optio adipisci 
         aspernatur vel nobis sint quae voluptate!
-    </p>
+    </p> -->
+    <input id="txt" type="text" name="name">
     <br>
-    <button onclick = "MODIFE()">Modifier texte</button>
+    <button id="btnReplace" onclick ="MODIFE()">Modifier texte</button>
     <script>
         function MODIFE() {
-            document.getElementById("txtReplace").innerHTML="Modifier texte";
+            document.getElementById("btnReplace").innerHTML= document.getElementById("txt").value;
         }
     </script>
 </body>
